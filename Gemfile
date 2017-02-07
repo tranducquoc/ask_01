@@ -15,7 +15,14 @@ gem "jquery-rails"
 gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
 gem "mysql2"
-
+gem "devise"
+gem "simple_form"
+gem "carrierwave", "~> 1.0"
+gem "ckeditor"
+gem "font-awesome-sass"
+gem "faker"
+gem "bower-rails", "~> 0.11.0"
+gem "friendly_id", "~> 5.1.0"
 
 group :development, :test do
   gem "byebug", platform: :mri
