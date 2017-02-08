@@ -1,0 +1,56 @@
+<div id="edit-profile-current-user" class="row">
+  <div class="panel panel-primary center-block profile-inner">
+    <div class="panel-heading">
+      <h2>
+        <%= t("edit_profile_page.title", title: resource_name.to_s.humanize) %>
+      </h2>
+    </div>
+
+    <div class="panel-body">
+        <%= simple_form_for(resource, as: resource_name,
+          url: registration_path(resource_name),
+          html: {method: :put}) do |f| %>
+
+          <%= devise_error_messages! %>
+
+          <%= f.input :name, autofocus: true %>
+
+          <%= f.input :story,as: :text, autofocus: true %>
+
+          <%= f.input :email, autofocus: true %>
+
+          <% if devise_mapping.confirmable? &&
+            resource.pending_reconfirmation? %>
+            <div>
+              <%= t("edit_profile_page.alert_wait_confirm",
+                email: resource.unconfirmed_email) %>
+            </div>
+          <% end %>
+
+          <%= f.input :password, autocomplete: "off" %>
+          <% if @minimum_password_length %>
+            <br />
+            <em><%= t("edit_profile_page.min_pass_character",
+                  number: @minimum_password_length) %></em>
+          <% end %>
+
+          <%= f.input :password_confirmation, autocomplete: "off" %>
+
+          <div class="form-group">
+            <%= f.label :current_password %>
+            <i>(<%= t "edit_profile_page.alert_need_current_password" %>)</i>
+            <%= f.password_field :current_password, autocomplete: "off" %>
+          </div>
+
+          <%= f.input :avatar, as: :file %>
+
+          <div class="actions">
+            <%= f.button :submit, value: t("edit_profile_page.btn_submit") %>
+          </div>
+
+        <% end %>
+
+        <%= link_to t("edit_profile_page.back"), :back %>
+    </div>
+  </div>
+</div>

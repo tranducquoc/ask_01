@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= t "title" %></title>
+
+    <%= stylesheet_link_tag "application", debug: true, media: "all",
+      "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "application", debug: true %>
+    <%= csrf_meta_tags %>
+
+  </head>
+  <body>
+    <div id="wrapper">
+      <%= render template: "layouts/_header" %>
+      <div id="wrapper-body" class="container">
+        <%= yield %>
+      </div>
+      <%= render template: "layouts/_footer" %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+asset 'jquery'
+asset 'bootstrap'
+asset 'moment'
+asset 'select2'
+asset 'handlebars'
+asset 'tinymce', main_files: ["./tinymce.js"]
+
+asset 'markdown'
+
+asset 'underscore'
+
+asset 'classnames'
