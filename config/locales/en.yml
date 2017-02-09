@@ -20,5 +20,55 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+
   hello: "Hello world"
   title: "Ask and answer"
+
+  sign_up_page:
+    title: "Sign up"
+    btn_submit: "Sign up"
+
+  changepass_page:
+    title: "Change your password"
+    confirm_pass: "Confirm new password"
+    btn_submit: "Change my password"
+    new_pass: "New password"
+
+  forgot_password_page:
+    title: "Forgot your password?"
+    btn_submit: "Send me reset password instructions"
+
+  edit_profile_page:
+    title: "Edit %{title}"
+    alert_need_current_password: "we need your current password to confirm your changes"
+    alert_wait_confirm: "Currently waiting confirmation for: %{email}"
+    btn_submit: "Save"
+    back: "Back"
+    min_pass_character: "%{number} characters minimum"
+
+  devise_share_links:
+    login: "Login"
+    sign_up: "Sign up"
+    forgot_password: "Forgot your password?"
+    did_not_receive_email: "Didn't receive confirmation instructions?"
+    did_not_receive_unlock: "Didn't receive unlock instructions?"
+    sign_in_omniauth : "Sign in with %{name}"
+
+  home_page:
+    sign_up: "Sign up"
+    login: "Login"
+    copyright: "Copyright &copy; 2016 All rights reserved."
+    sub_footer: "Anything you want"
+
+  login_page:
+    title: "Sign in"
+    btn_login: "Login"
+    yes_remember_me: "Yes, remember me"
+
+  reset_unlock_page:
+    title: "Resend unlock instructions"
+    btn_submit: "Resend unlock instructions"
+
+  confirmation_page:
+    title: "Resend confirmation instructions"
+    btn_submit: "Resend confirmation instructions"

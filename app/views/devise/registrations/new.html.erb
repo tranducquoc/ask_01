@@ -1,0 +1,33 @@
+<div id="wr-signup-page" class="row">
+  <div class="sign-up-inner center-block">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><%= t "sign_up_page.title" %></div>
+      <div class="panel-body">
+
+          <%= simple_form_for(resource, as: resource_name,
+            url: registration_path(resource_name)) do |f| %>
+
+            <%= devise_error_messages! %>
+
+            <%= f.input :name, autofocus: true %>
+
+            <%= f.input :story,as: :text, autofocus: true %>
+
+            <%= f.input :email, autofocus: true %>
+
+            <%= f.input :password, autocomplete: "off" %>
+
+            <%= f.input :password_confirmation, autocomplete: "off" %>
+
+            <%= f.input :avatar, as: :file %>
+
+            <div class="actions">
+              <%= f.button :submit, value: t("sign_up_page.btn_submit") %>
+            </div>
+
+          <% end %>
+          <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
