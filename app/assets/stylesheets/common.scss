@@ -1,0 +1,56 @@
+.ta-fix{
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table{
+  display: table;
+}
+
+.table_row{
+  display: table-row;
+}
+
+.table_cell{
+  display: table-cell;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.img_40 {
+  width: 40px;
+  height: 40px;
+}
+
+.img_30 {
+  width: 30px;
+  height: 30px;
+}
+
+.img_25 {
+  width: 25px;
+  height: 25px;
+}
+
+.block_left{
+  display: block;
+  float: left;
+}
+
+.block_right{
+  display: block;
+  float: right;
+}
+
+.clearfix{
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
