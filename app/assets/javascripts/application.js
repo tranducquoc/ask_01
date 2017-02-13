@@ -15,5 +15,13 @@
 //= require bootstrap
 //= require select2-full
 //= require ckeditor/init
+//= require react
+//= require components
+//= require react_ujs
+//= require classnames
+//= require underscore
 //= require turbolinks
+//= require tinymce/tinymce
+//= require i18n
+//= require i18n/translations
 //= require_tree .

@@ -1,0 +1,12 @@
+user:
+  name_max: 255
+  email_max: 255
+  story_max: 255
+question:
+  content_max: 255
+vote:
+  up: 1
+  down: 0
+status:
+  ok: 1
+  not_ok: 0
