@@ -72,3 +72,16 @@ en:
   confirmation_page:
     title: "Resend confirmation instructions"
     btn_submit: "Resend confirmation instructions"
+
+  question_page:
+    add_comment: "Add a comment"
+    cancel: "Cancel"
+    save: "Save"
+    share: "share"
+    edit: "edit"
+    flag: "flag"
+    confirm_delete: "Do you really want to delete ?"
+    submit_answer: "Submit answer"
+    link_to_answer: "Please %{link} to answer question."
+    errors:
+      not_empty_comment: "Your comment can't empty"

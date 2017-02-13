@@ -1,0 +1,184 @@
+#wr-detail-question {
+  .wr-combine {
+    .sec-show-question-detail{
+      .main-content{
+        >div>.wr-vote{
+          display: block;
+          position: relative;
+          font-size: 19px;
+          width: 12px;
+          float: left;
+          margin-right: 12px;
+
+          .icon-up{
+            position: absolute;
+            top: -13px;
+          }
+          .icon-down{
+            position: absolute;
+            top: 14px;
+            left: 0px;
+          }
+        }
+
+        h2.title{
+          padding-bottom: 11px;
+          border-bottom: 1px dotted #C0C0C0;
+        }
+        .inner-content{
+          .content{
+
+          }
+          .wrapper-author{
+            table.list-author{
+              width: 100%;
+              display: table;
+              tbody{
+                margin: 0;
+                padding: 0;
+                border: 0;
+                font-size: 100%;
+                tr{
+                  .vt-left{
+                    text-align: left;
+                  }
+                  .vt-right{
+                    text-align: right;
+                  }
+                }
+              }
+            }
+          }
+
+          .wrapper-comment-answer{
+            table.ta-add-comment{
+              tr{
+                td:nth-child(1){
+                  width: 70%;
+                }
+                td:nth-child(2){
+                  text-align: right;
+                }
+                td{
+                  .btn-add{
+                    float:right;
+                  }
+                }
+              }
+            }
+
+            .list-comments{
+              width: 100%;
+              table-layout: fixed;
+              tbody{
+                tr{
+                  td.vt-count-vote{
+                    width: 30px;
+                  }
+                  td.vt-action-vote{
+                    width: 30px;
+                  }
+                  td.vt-comment{
+                    time{
+                      font-size: 10px;
+                      color: #615e5e;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .wrapper-answer{
+          .list-answers{
+            .fr-answer{
+              border: 1px solid #E1E1E1;
+              padding: 10px;
+              tbody{
+                tr:nth-child(2) {
+                  td.wr-menu-action{
+                    width: 70%;
+                  }
+                }
+                tr{
+                  td.col-vote{
+                    width: 20px;
+                    .wr-vote{
+                      display: block;
+                      position: relative;
+                      font-size: 19px;
+                      .icon-up{
+                        position: absolute;
+                        top: -13px;
+                      }
+                      .icon-down{
+                        position: absolute;
+                        top: 14px;
+                        left: 0px;
+                      }
+                    }
+                  }
+                  td{
+                    ul.menu-action{
+                      list-style: none;
+                      padding-left: 0px;
+                      li{
+                        list-style: none;
+                        display: inline-block;
+
+                      }
+                    }
+                  }
+                  .td-wr-author{
+                    min-width: 100px;
+                  }
+
+                  td.pa-comment{
+                    .wrapper-comment-answer{
+                      .list-comments{
+                        .item-comment{
+                          min-height: 32px;
+                          border-bottom: 1px #C0C0C0 dashed;
+                          .wr-fr-show{
+                            display: flex;
+                            .vt-count-vote{
+                              min-width: 15px;
+                            }
+                            .vt-action-vote{
+                              min-width: 15px;
+                            }
+                            .wr-act{
+                              margin-left: 6px;
+                            }
+                          }
+                          .wr-fr-edit{
+                            form.fr-edit{
+                              .form-group{
+                                margin-bottom: 2px;
+                              }
+                            }
+                          }
+                        }
+                      }
+                      table.ta-add-comment{
+                        tr{
+                          td:nth-child(1){
+                            width: 70%;
+                          }
+                          td:nth-child(2){
+                            text-align: right;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
