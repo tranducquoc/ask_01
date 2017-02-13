@@ -1,0 +1,177 @@
+#home-page{
+  .feed-wrap{
+    .feed-inner-wrap{
+      .home_main_feed_head{
+        color: #a0a0a0;
+        margin-bottom: 11px;
+        display: block;
+        border-bottom: 1px solid #e4e2e2;
+      }
+      .feed_suggest_ask{
+        border: 1px solid #f9f3f3;
+        padding: 10px;
+        width: 100%;
+        -webkit-box-shadow: inset 3px 3px 23px -2px rgba(199, 199, 199, 0.66);
+        -moz-box-shadow: inset 3px 3px 23px -2px rgba(199, 199, 199, 0.66);
+        box-shadow: inset 3px 3px 23px -2px rgba(199, 199, 199, 0.66);
+        @extend .clearfix;
+
+        .user-info{
+          display: block;
+          float: left;
+          .wr-avatar{
+
+          }
+          .name {
+
+          }
+          .wr-suggest-ask{
+            display: block;
+            float: left;
+            height: 80px;
+            .sentence-suggest-ask{
+              font-size: 21px;
+              color: #d6d1d1;
+            }
+          }
+        }
+      }
+      .question-feed{
+        .paged-list-item{
+          padding: 10px;
+          border-bottom: 1px dashed #C0C0C0;
+          .feed-item-inner{
+            .list-topics{
+              margin-bottom: 5px;
+              .item-topic{
+                border-radius: 8px;
+                display: inline-block;
+                background-color: #C0C0C0;
+                a{
+                  color: white;
+                  text-decoration: none;
+                  font-size: 12px;
+                  padding: 4px;
+                }
+              }
+            }
+            .feed-ques-title{
+              font-weight: bold;
+              font-size: 20px;
+              a{
+                text-decoration: none;
+                color: black;
+              }
+            }
+            .author{
+              @extend .clearfix;
+              .wr-avatar{
+                @extend .block_left;
+              }
+              .name {
+                @extend .block_left;
+              }
+            }
+          }
+        }
+      }
+    }
+    .sidebar-topic-trending{
+      .home-list-topic{
+        h3.title{
+          display: block;
+          height: 34px;
+          border-bottom: 1px solid #C0C0C0;
+          position: relative;
+          margin: 0px;
+          @extend .clearfix;
+
+          .title_with_link{
+            @extend .block_left;
+            font-size: 15px;
+            height: 30px;
+            padding: 10px;
+            font-weight: bold;
+            color: #9e8f8f;
+          }
+          .hover-menu-chose{
+            display: block;
+            position: absolute;
+            left: 272px;
+            width: 200px;
+            min-height: 225px;
+            padding: 3px;
+            border: 1px solid #C0C0C0;
+            background-color: #ffbeaa;
+            z-index: 100;
+
+            .hover-menu-content{
+              .selection_input_interaction{
+                input[name="search_topic"]{
+                  font-size: 15px;
+                  margin-bottom: 4px;
+                }
+              }
+              .container_topic_suggests{
+                .sug_list_topic{
+                  padding-left: 0px;
+                  @extend .clearfix;
+                  li.item-list-choose{
+                    list-style: none;
+                    background-color: #ffd8cc;
+                    padding: 5px;
+                    border-bottom: 1px dashed darkblue;
+                    @extend .clearfix;
+                    .act-add-topic{
+                      text-decoration: none;
+                      font-size: 14px;
+                      @extend .block_left;
+                      margin-right: 10px;
+                    }
+                    .sug_topic_name{
+                      font-size: 14px;
+                      @extend .block_left;
+                      margin-right: 10px;
+                    }
+                    .icon{
+                      @extend .block_right;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .text-action{
+            @extend .block_right;
+            cursor: pointer;
+            font-size: 14px;
+            height: 30px;
+            padding: 10px;
+          }
+        }
+        .paged-list-topic{
+          ul {
+            padding-left: 0px;
+            li.item-list-follow{
+              list-style: none;
+              display: block;
+              padding: 5px;
+              padding-left: 15px;
+              .removeIcon {
+                text-decoration: none;
+                color: #C0C0C0;
+                display: block;
+                float: left;
+                margin-right: 10px;
+              }
+              .link-topic {
+                text-decoration: none;
+                color: #6b6161;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

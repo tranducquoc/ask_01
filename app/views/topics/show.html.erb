@@ -1,0 +1,101 @@
+<div id="wr-detail-topic" class="container">
+  <div class="wr-combine">
+    <div class="wr-title row">
+      <div class="wr-icon">
+        <img src="<%= @topic.icon %>" alt="" class="icon-title">
+      </div>
+      <div class="wr-info">
+        <h2 class="title"><%= @topic.name %></h2>
+        <% if user_signed_in? %>
+          <% if @isFollow %>
+            <span class="wr-vote">
+              <%= link_to t("topic.unfollow"),
+                topic_fotopics_url(@topic.id, type: 0), method: :post %>
+            </span>
+          <% else %>
+            <span class="wr-vote">
+              <%= link_to t("topic.follow"),
+                topic_fotopics_url(@topic.id, type: 1), method: :post %>
+            </span>
+          <% end %>
+        <% else %>
+          <span class="wr-vote">
+            <%= link_to t("topic.follow"), new_user_session_path %>
+          </span>
+        <% end %>
+      </div> <!-- .wr-info -->
+    </div> <!-- .wr-title -->
+
+    <div class="row inner-content">
+      <section class="main-content col-md-5 col-lg-5">
+        <div class="question-feed">
+          <% @questions.each do |question| %>
+            <div class="paged-list-item">
+              <div class="feed-item-inner">
+                <div class="list-topics">
+                  <% question.topics.each do |topic| %>
+                    <span class="item-topic">
+                      <%= link_to topic.name, topic_path(topic) %>
+                    </span>
+                  <% end %>
+                </div>
+                <div class="time">
+                  <%= question.updated_at %>
+                </div>
+                <span class="feed-ques-title">
+                  <%= link_to question.title, question_path(question.slug),
+                    alt: question.title %>
+                </span>
+                <span class="author">
+                  <div class="wr-avatar">
+                    <%= image_tag question.user.avatar.url,
+                      class: "circle img_40" %>
+                  </div>
+                  <div class="name">
+                    <%= question.user.name %>
+                  </div>
+                </span>
+                <div class="ques-content">
+                  <%= raw question.content %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <%= will_paginate @questions %>
+        </div>
+      </section>
+      <section class="sidebar col-md-5 col-lg-5">
+        <div class="about">
+          <h3 class="title"><%= t "topic_page.about" %></h3>
+          <div class="topicWikiText">
+              <%= @topic.description %>
+          </div>
+          <div class="analytic">
+            <div class="table">
+              <div class="table_row">
+                <div class="table_cell">
+                  <div class="cell_inner">
+                    <strong><%= @countQuestion %></strong>
+                      <%= t "topic_page.questions" %>
+                  </div>
+                </div>
+                <div class="table_cell">
+                  <div class="cell_inner">
+                    <strong><%= @numberPeopleFollow %></strong>
+                      <%= t "topic_page.followers" %>
+                  </div>
+                </div>
+                <div class="table_cell">
+                  <div class="cell_inner">
+                    <strong><%= @numberAnswerInTopic %></strong>
+                      <%= t "topic_page.answers" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

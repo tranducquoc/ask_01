@@ -1,30 +1,13 @@
 <section id="home-page">
   <div class="feed-wrap row">
-    <div class="sidebar-topic-trending col-md-3">
-      <% if user_signed_in? %>
-        <%= react_component("HomeListTopic", topicsFollow: @topicsFollow,
-          topics: @topics) %>
-      <% end %>
-    </div>
     <div class="feed-inner-wrap col-md-9">
       <span class="home_main_feed_head">
-        <%= t "home_page.top_question_for_you" %></span>
-
-      <% if user_signed_in? %>
-        <div class="feed_suggest_ask">
-          <div class="user-info">
-            <div class="wr-avatar">
-              <%= image_tag current_user.avatar.url,
-                class: "circle img img_30" %>
-            </div>
-            <span class="name"><%= current_user.name %></span>
-          </div> <!-- .user-info -->
-          <div class="wr-suggest-ask">
-          <%= link_to t("home_page.sentence_suggest_ask"), new_question_path,
-            class: "sentence-suggest-ask" %>
-          </div>
-        </div> <!-- .feed_suggest_ask -->
-      <% end %>
+        <strong><%= t "search_page.title" %>
+          <% if params[:word_search].present? %>
+            <%= params[:word_search] %>
+          <% end %>
+        </strong>
+       </span>
 
       <div class="question-feed">
         <% @questions.each do |question| %>
@@ -62,6 +45,7 @@
         <% end %>
 
         <%= will_paginate @questions %>
+
       </div> <!-- .question-feed -->
     </div>
   </div>
