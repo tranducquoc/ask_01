@@ -13,10 +13,20 @@
   <body>
     <div id="wrapper">
       <%= render template: "layouts/_header" %>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: "alert alert-info" %>
+      <% end %>
+
+      <%= render template: "layouts/_header" %>
       <div id="wrapper-body" class="container">
         <%= yield %>
       </div>
       <%= render template: "layouts/_footer" %>
     </div>
   </body>
+  <script type="text/javascript">
+    I18n.defaultLocale = "<%= I18n.default_locale %>";
+    I18n.locale = "<%= I18n.locale %>";
+    $(".alert" ).fadeOut(3000);
+  </script>
 </html>

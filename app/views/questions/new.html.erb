@@ -1,0 +1,21 @@
+<div id="wr-ask container">
+  <%= render template: "questions/action_more" %>
+  <div class="fr-form-ask row">
+
+    <div class="col-md-5 col-md-offset-1">
+      <%= simple_form_for @question do |f| %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= f.input :title, input_html: {class: "special"} %>
+        <%= f.input :content, as: :ckeditor%>
+
+        <%= f.input :topics, collection: @topics, label_method: :name,
+          value_method: :id, label: t("question_page.topics") ,
+          include_blank: true,
+          input_html: {multiple: true, class: "select2"} %>
+
+        <%= f.button :submit, label: t("question_page.create_question") %>
+      <% end %>
+    </div>
+
+  </div>
+</div>

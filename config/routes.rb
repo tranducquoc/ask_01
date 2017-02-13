@@ -5,7 +5,12 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  resources :users do
+  resources :answers
 
-  end
+  resources :questions
+
+  resources :comments
+
+  resources :users
+
 end
