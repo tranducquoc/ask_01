@@ -24,6 +24,16 @@ en:
   hello: "Hello world"
   title: "Ask and answer"
 
+  search_page:
+    title: "Result search for work:"
+    questions: "questions"
+
+  topic_page:
+    title: "Result search for work:"
+    questions: "questions"
+    followers: "followers"
+    answers: "answers"
+
   sign_up_page:
     title: "Sign up"
     btn_submit: "Sign up"
@@ -85,3 +95,21 @@ en:
     link_to_answer: "Please %{link} to answer question."
     errors:
       not_empty_comment: "Your comment can't empty"
+
+  home_page:
+    home: "Home"
+    login_in: "Login"
+    profile: "Profile"
+    edit_profile: "Edit profile"
+    logout: "Logout"
+    top_question_for_you: "Top question for you"
+    sentence_suggest_ask: "What is your question ?"
+    account: "Account"
+    feed: "Feed"
+    done: "Done"
+    edit: "Edit"
+
+  topic:
+    show:
+      follow: "Follow"
+      unfollow: "Unfollow"
