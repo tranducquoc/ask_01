@@ -24,6 +24,16 @@ en:
   hello: "Hello world"
   title: "Ask and answer"
 
+  search_page:
+    title: "Result search for work:"
+    questions: "questions"
+
+  topic_page:
+    title: "Result search for work:"
+    questions: "questions"
+    followers: "followers"
+    answers: "answers"
+
   sign_up_page:
     title: "Sign up"
     btn_submit: "Sign up"

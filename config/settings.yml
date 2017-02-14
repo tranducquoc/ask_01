@@ -10,3 +10,5 @@ vote:
 status:
   ok: 1
   not_ok: 0
+home:
+  per_page: 5
