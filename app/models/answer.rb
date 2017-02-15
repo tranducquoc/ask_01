@@ -1,4 +1,7 @@
 class Answer < ApplicationRecord
+
+  include PublicActivity::Model
+
   belongs_to :question, dependent: :destroy, foreign_key: "reply_to"
 
   has_many :actions, as: :actionable

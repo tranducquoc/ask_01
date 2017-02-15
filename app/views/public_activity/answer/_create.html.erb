@@ -1,0 +1,9 @@
+<li>
+  <span>
+    <%= link_to a.trackable.question.title, question_path(a.trackable.question.id) %>
+    <%= t "activity.is_answered" %>
+    <% if a.owner.present? %>
+      <b class="owner_name"><%= a.owner.name %></b>
+    <% end %>
+  </span>
+</li>

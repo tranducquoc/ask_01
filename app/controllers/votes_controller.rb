@@ -40,6 +40,7 @@ class VotesController < ApplicationController
     if @answer.nil? || User.is_upvote_answer(current_user.id, params[:answer_id])
       result = {status: Settings.status.not_ok}
     else
+      @answer.create_activity key: Settings.activity.answer.up_vote, owner: current_user
       if update_vote_answer_up @answer
         result = {status: Settings.status.ok, data: @answer}
       else
@@ -58,7 +59,6 @@ class VotesController < ApplicationController
     end
     p = Action.create action_downvote_params
     p.save
-
     Action.by_user(current_user.id).target(:answer)
       .with_id(params[:answer_id]).is_upvote.destroy_all
     return answer.save
@@ -69,6 +69,7 @@ class VotesController < ApplicationController
     if @answer.nil? || User.is_downvote_answer(current_user.id, params[:answer_id])
       result = {status: Settings.status.not_ok}
     else
+      @answer.create_activity key: Settings.activity.answer.down_vote, owner: current_user
       if update_vote_answer_down @answer
         result = {status: Settings.status.ok, data: @answer}
       else
@@ -89,6 +90,7 @@ class VotesController < ApplicationController
   def up_vote_comment
     @comment = Comment.find_by id: params[:comment_id]
     if @comment.present?
+      @comment.create_activity key: Settings.activity.comment.up_vote, owner: current_user
       if update_vote_comment_up @comment
         result = {status: Settings.status.ok, data: @comment}
       else
@@ -111,6 +113,7 @@ class VotesController < ApplicationController
   def remove_vote_comment
     @comment = Comment.find_by id: params[:comment_id]
     if @comment.present?
+      @comment.create_activity key: Settings.activity.comment.down_vote, owner: current_user
       if update_vote_comment_down @comment
         result = {status: Settings.status.ok, data: @comment}
       else

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130014501) do
+ActiveRecord::Schema.define(version: 20170215025930) do
 
   create_table "actions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
@@ -19,14 +19,30 @@ ActiveRecord::Schema.define(version: 20170130014501) do
     t.integer "type_act"
   end
 
+  create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "trackable_type"
+    t.integer  "trackable_id"
+    t.string   "owner_type"
+    t.integer  "owner_id"
+    t.string   "key"
+    t.text     "parameters",     limit: 65535
+    t.string   "recipient_type"
+    t.integer  "recipient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
+    t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
+    t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
+  end
+
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content"
     t.integer  "reply_to"
     t.integer  "user_id"
-    t.integer  "up_vote"
-    t.integer  "down_vote"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "up_vote",    default: 0
+    t.integer  "down_vote",  default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -46,10 +62,10 @@ ActiveRecord::Schema.define(version: 20170130014501) do
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "user_id"
-    t.integer  "up_vote"
-    t.integer  "down_vote"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "up_vote",          default: 0
+    t.integer  "down_vote",        default: 0
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "follows", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -90,12 +106,12 @@ ActiveRecord::Schema.define(version: 20170130014501) do
     t.string   "title"
     t.string   "content"
     t.integer  "user_id"
-    t.integer  "up_vote"
-    t.integer  "down_vote"
-    t.integer  "views"
+    t.integer  "up_vote",    default: 0
+    t.integer  "down_vote",  default: 0
+    t.integer  "views",      default: 0
     t.string   "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "topics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

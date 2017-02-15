@@ -1,4 +1,7 @@
 class Question < ApplicationRecord
+
+  include PublicActivity::Model
+
   has_many :question_topics
   has_many :topics, through: :question_topics
   accepts_nested_attributes_for :topics

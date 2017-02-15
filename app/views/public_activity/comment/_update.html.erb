@@ -1,0 +1,14 @@
+<li>
+  <span>
+    <% if a.trackable.commentable.class.name == "Question" %>
+      <%= link_to a.trackable.commentable.title, question_path(a.trackable.commentable.id) %>
+    <% else %>
+      <%= link_to a.trackable.commentable.question.title, question_path(a.trackable.commentable.question.id) %>
+    <% end %>
+
+    <%= t "activity.update" %>
+    <% if a.owner.present? %>
+      <b class="owner_name"><%= a.owner.name %></b>
+    <% end %>
+  </span>
+</li>

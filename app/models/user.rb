@@ -2,6 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
+  include PublicActivity::Model
+
   has_many :actions
   has_many :questions
   has_many :answers
@@ -22,6 +24,19 @@ class User < ApplicationRecord
     message: I18n.t("flash.user.email")
 
   class << self
+
+    def is_follow_user(user_id, current_user_id)
+      query = Action.where "user_id = ? and actionable_type = ? and actionable_id = ? and type_act = ?",
+        current_user_id, Action.target_acts[:user], user_id, Action.type_acts[:follow];
+      return query.length != 0
+    end
+
+    def number_user_follow user_id
+      query = Action.where "actionable_type = ? and actionable_id = ? and type_act = ?",
+        Action.target_acts[:user], user_id, Action.type_acts[:follow];
+      return query.length
+    end
+
     def is_upvote_answer(current_user_id, answer_id)
       query = Action.is_upvote_answer current_user_id, answer_id
       return query.length != 0
@@ -40,6 +55,11 @@ class User < ApplicationRecord
     def is_downvote_question(current_user_id, question_id)
       query = Action.is_downvote_question current_user_id, question_id;
       return query.length != 0
+    end
+
+    def activity_by_user user_id
+      PublicActivity::Activity.order("created_at desc")
+        .where owner_id: user_id
     end
   end
 

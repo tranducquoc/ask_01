@@ -2,7 +2,7 @@ class Action < ApplicationRecord
   belongs_to :actionable, polymorphic: true
   enum type_act: [ :down_vote, :up_vote, :share_fa, :share_tw, :follow ], _suffix: true
 
-  enum target_act: {answer: "Answer", question: "Question", topic: "Topic", comment: "Comment"}
+  enum target_act: {answer: "Answer", question: "Question", topic: "Topic", comment: "Comment", user: "User"}
 
   scope :by_user, ->user_id{where user_id: user_id}
 
@@ -19,6 +19,11 @@ class Action < ApplicationRecord
   scope :numberFollow, -> topic_id do
     where(actionable_id: topic_id, actionable_type: Action.target_acts[:topic],
       type_act: Action.type_acts[:follow])
+  end
+
+  scope :follow_user, -> current_user_id, user_id do
+    where user_id: current_user_id, actionable_id: user_id,
+      actionable_type: Action.target_acts[:user], type_act: :follow
   end
 
   scope :is_upvote_answer, -> (current_user_id, answer_id) do

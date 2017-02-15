@@ -1,0 +1,145 @@
+<div id="wr-profile" class="container">
+  <div class="row">
+    <section class="basic-info center-block">
+      <div class="basic-info-inner">
+        <div class="wrapper_avatar">
+          <img src="<%= @user.avatar %>" alt="" class="img_avatar">
+        </div>
+        <div class="wrapper_info">
+          <div class="info_inner">
+            <h2 class="info_name"><%= @user.name %></h2>
+              <div class="wr_action_follow">
+                <span>
+                  <% if user_signed_in? && @isFollowUser %>
+                    <a href="javascript:" class="action_follow"
+                      data-unfollow="<%= t "user.show.unfollow" %>"
+                      data-follow="<%= t "user.show.follow" %>"
+                      data-action="unfollow"
+                      data-id="<%= @user.id %>">
+                      <%= t "user.show.unfollow" %></a>|
+                  <% elsif user_signed_in? && current_user.id != @user.id %>
+                    <a href="javascript:" class="action_follow"
+                      data-unfollow="<%= t "user.show.unfollow" %>"
+                      data-follow="<%= t "user.show.follow" %>"
+                      data-action="follow"
+                      data-id="<%= @user.id %>">
+                      <%= t "user.show.follow" %></a>|
+                  <% else %>
+                    <a href="javascript:"><%= t "user.show.follower" %></a>|
+                  <% end %>
+                  <strong><%= @support.numberUserFollow %></strong>
+                </span>
+              </div>
+            <div class="info_story">
+              <span class="text_story">
+                <%= @user.story %>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> <!-- .basic-info -->
+
+    <div class="row second_info">
+      <div class="col-md-3 analytic">
+        <div class="header">
+          <h2><%= t "profile_page.feed" %></h2>
+        </div>
+        <div class="inner_show_analytic">
+          <ul class="list_analytic_info">
+            <li>
+              <span><%= t "profile_page.ask" %>:
+                <strong><%= @support.numberQuestion %></strong></span>
+            </li>
+            <li>
+              <span><%= t "profile_page.answers" %>:
+                <strong><%= @support.numberAnswer %></strong></span>
+            </li>
+            <li>
+              <span><%= t "profile_page.comments" %>:
+                <strong><%= @support.numberComment %></strong></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <section class="wrapper_activity col-md-9">
+        <div class="activity_inner">
+          <div class="act_header">
+            <%= t "profile_page.last_activity" %>
+          </div>
+          <div class="wr_list_activity">
+            <ul class="list_activity">
+              <%= render_activities(@activities) %>
+            </ul>
+            <%= will_paginate @activities %>
+          </div> <!-- .wr_list_activity -->
+        </div>
+      </section> <!-- .wrapper_activity -->
+    </div> <!-- .second_info -->
+
+
+    <section class="wrapper_main_act row">
+      <div class="col-md-4 frame_questions">
+        <div class="panel panel-primary">
+          <div class="panel-heading"><%= t "profile_page.last_questions" %></div>
+          <div class="panel-body">
+            <div class="wr_list_questions">
+              <ul class="list_questions">
+                <% @user.questions.each do |question| %>
+                  <li class="ques-item">
+                    <span>
+                      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                      <a href="<%= question_path(question.id) %>">
+                        <%= question.title %></a>
+                    </span>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 frame_answers">
+        <div class="panel panel-primary">
+          <div class="panel-heading"><%= t "profile_page.last_answers" %></div>
+          <div class="panel-body">
+            <div class="wr_list_answers">
+              <ul class="list_answers">
+                <% @user.answers.each do |answer| %>
+                  <li class="answer-item">
+                    <span>
+                      <i class="fa fa-cc" aria-hidden="true"></i>
+                      <a href="<%= question_path(answer.question.id) %>">
+                        <%= raw answer.question.title %></a>
+                    </span>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 frame_comments">
+        <div class="panel panel-primary">
+          <div class="panel-heading"><%= t "profile_page.last_comments" %></div>
+          <div class="panel-body">
+            <div class="wr_list_comments">
+              <ul class="list_comments">
+                <% @user.comments.each do |comment| %>
+                  <li class="answer-item">
+                    <span>
+                      <i class="fa fa-comment-o" aria-hidden="true"></i>
+                      <a href="<%= question_path(comment.final_question.id) %>">
+                        <%= raw comment.final_question.title %></a>
+                    </span>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>

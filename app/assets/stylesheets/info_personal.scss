@@ -1,0 +1,126 @@
+#wr-profile{
+  .basic-info{
+    display: block;
+    width: 80%;
+    .basic-info-inner{
+      display: block;
+      @extend .clearfix;
+      .wrapper_avatar{
+        display: block;
+        float: left;
+        margin-right: 20px;
+        img{
+          display: block;
+          border-radius: 50%;
+          width: 150px;
+          height: 150px;
+        }
+      }
+      .wrapper_info{
+        @extend .block_left;
+        .info_inner{
+          .wr_action_follow{
+            display: block;
+            width: 93px;
+            height: 30px;
+            border-radius: 6px;
+            border: 1px solid #5ea3ed;
+            span{
+              display: block;
+              width: 90px;
+              height: 28px;
+              padding-top: 3px;
+              padding-left: 8px;
+              color: #3f7cc6;
+              a{
+                text-decoration: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .second_info{
+    .analytic{
+      .header{
+        border-bottom: 1px solid #E1E1E1;
+      }
+      .inner_show_analytic{
+        .list_analytic_info{
+          padding-left: 2px;
+          li{
+            list-style: none;
+            color: #cc6f6f;
+            font-weight: 800;
+            padding-top: 7px;
+          }
+        }
+      }
+    }
+  }
+  .wrapper_activity{
+    display: block;
+    border-bottom: 1px solid #9a5251;
+    margin-bottom: 26px;
+    .activity_inner{
+      .act_header{
+        border-bottom: 1px solid #E1E1E1;
+        padding-bottom: 5px;
+        font-weight: 900;
+        color: #b35959;
+      }
+      .wr_list_activity{
+        .list_activity{
+          padding-left: 2px;
+          li{
+            list-style: none;
+            padding: 5px;
+            border-bottom: 1px dashed #E1E1E1;
+          }
+        }
+      }
+    }
+  }
+  .wrapper_main_act{
+    .frame_questions{
+      .wr_list_questions{
+        .list_questions{
+            padding-left: 2px;
+            li{
+              list-style: none;
+              padding: 2px;
+              border-bottom: 1px dashed #C0C0C0;
+            }
+        }
+      }
+    }
+    .frame_answers{
+      .wr_list_answers{
+        .list_answers{
+          padding-left: 2px;
+          li{
+            list-style: none;
+            padding: 2px;
+            border-bottom: 1px dashed #C0C0C0;
+          }
+        }
+      }
+    }
+    .frame_comments{
+      .wr_list_comments{
+        .list_comments{
+          padding-left: 2px;
+          li{
+            list-style: none;
+            padding: 2px;
+            border-bottom: 1px dashed #C0C0C0;
+          }
+        }
+      }
+    }
+    .panel-heading{
+      background-color: #c9b3ad;
+    }
+  }
+}

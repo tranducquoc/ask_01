@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
     @comment = Comment.includes(:user).create comment_question_params;
     @comment.user_id = current_user.id;
     if @comment.save
+      @comment.create_activity key: Settings.activity.comment.create, owner: current_user
       comment = @comment.to_json(include: [:user])
       result = {status: Settings.status.ok, data: comment}
       render json: result
@@ -27,6 +28,7 @@ class CommentsController < ApplicationController
       @comment.content = params[:content]
       if @comment.save
         result = {status: Settings.status.ok, data: @comment}
+        @comment.create_activity key: Settings.activity.comment.update, owner: current_user
       else
         result = {status: Settings.status.not_ok, data: @comment,
           errors: @comment.errors}
