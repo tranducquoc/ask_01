@@ -20,7 +20,6 @@
 //= require react_ujs
 //= require classnames
 //= require underscore
-//= require turbolinks
 //= require tinymce/tinymce
 //= require i18n
 //= require i18n/translations

@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.includes({answers: [:user, {comments:
       [:actions, :user]}] }, :user, {comments: [:actions, :user]})
-      .find(params[:id])
+      .find_muti params[:id]
 
     unless @question
       flash[:notice] = t "flash.question.not_found"
@@ -53,7 +53,7 @@ class QuestionsController < ApplicationController
           else
             result = up_vote
           end
-          result
+          render json: result
         }
       end
     else
@@ -127,12 +127,12 @@ class QuestionsController < ApplicationController
   end
 
   def action_upvote_params
-    {actionable_id: params[:id], actionable_type: :question,
+    {actionable_id: params[:id], actionable_type: Action.target_acts[:question],
       user_id: current_user.id, type_act: :up_vote}
   end
 
   def action_downvote_params
-    {actionable_id: params[:id], actionable_type: :question,
+    {actionable_id: params[:id], actionable_type: Action.target_acts[:question],
       user_id: current_user.id, type_act: :down_vote}
   end
 

@@ -7,7 +7,14 @@ class FotopicsController < ApplicationController
     else
       result = unfollow
     end
-    render json: result
+    respond_to do |format|
+      format.html {
+        redirect_to :back
+      }
+      format.json {
+        render json: result
+      }
+    end
   end
 
   private
@@ -34,6 +41,6 @@ class FotopicsController < ApplicationController
 
   def follow_params
     {user_id: current_user.id, actionable_id: params[:topic_id],
-      actionable_type: :topic, type_act: :follow}
+      actionable_type: Action.target_acts[:topic], type_act: :follow}
   end
 end

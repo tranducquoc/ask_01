@@ -12,3 +12,9 @@ status:
   not_ok: 0
 home:
   per_page: 5
+topic:
+  name_max: 255
+  description_max: 255
+  follow: 1
+  unfollow: 0
+  per_page: 5

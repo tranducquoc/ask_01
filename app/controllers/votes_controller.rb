@@ -89,8 +89,6 @@ class VotesController < ApplicationController
   def up_vote_comment
     @comment = Comment.find_by id: params[:comment_id]
     if @comment.present?
-      p = Action.create action_upvote_comment_params
-      p.save
       if update_vote_comment_up @comment
         result = {status: Settings.status.ok, data: @comment}
       else
@@ -126,17 +124,20 @@ class VotesController < ApplicationController
   end
 
   def action_upvote_comment_params
-    {actionable_id: params[:comment_id], actionable_type: :comment,
+    {actionable_id: params[:comment_id],
+      actionable_type: Action.target_acts[:comment],
       user_id: current_user.id, type_act: :up_vote}
   end
 
   def action_upvote_params
-    {actionable_id: params[:answer_id], actionable_type: :answer,
+    {actionable_id: params[:answer_id],
+      actionable_type: Action.target_acts[:answer],
       user_id: current_user.id, type_act: :up_vote}
   end
 
   def action_downvote_params
-    {actionable_id: params[:answer_id], actionable_type: :answer,
+    {actionable_id: params[:answer_id],
+      actionable_type: Action.target_acts[:answer],
       user_id: current_user.id, type_act: :down_vote}
   end
 end

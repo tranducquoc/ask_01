@@ -12,6 +12,7 @@
     <%= javascript_include_tag "application", debug: true %>
     <%= csrf_meta_tags %>
 
+    <%= Gon::Base.render_data %>
   </head>
   <body>
     <div id="wrapper">

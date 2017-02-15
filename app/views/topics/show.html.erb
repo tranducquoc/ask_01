@@ -9,12 +9,12 @@
         <% if user_signed_in? %>
           <% if @isFollow %>
             <span class="wr-vote">
-              <%= link_to t("topic.unfollow"),
+              <%= link_to t("topic.show.unfollow"),
                 topic_fotopics_url(@topic.id, type: 0), method: :post %>
             </span>
           <% else %>
             <span class="wr-vote">
-              <%= link_to t("topic.follow"),
+              <%= link_to t("topic.show.follow"),
                 topic_fotopics_url(@topic.id, type: 1), method: :post %>
             </span>
           <% end %>

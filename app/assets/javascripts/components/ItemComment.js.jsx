@@ -102,10 +102,9 @@ var ItemComment = React.createClass({
     var fd = new FormData();
 
     $.ajax({
-      url: '/comments/' + this.props.comment.id + '/up_vote',
+      url: '/comments/' + this.props.comment.id + '/votes/1',
       method: 'POST',
-      processData: false,
-      contentType: false,
+      data: {_method: "PUT"}
     }).done(function(result) {
       if (result.status == 1) {
         self.setState({up_vote: self.state.up_vote + 1, isUpVote: true})
@@ -117,10 +116,9 @@ var ItemComment = React.createClass({
     var self = this;
 
     $.ajax({
-      url: '/comments/' + this.props.comment.id + '/remove_vote',
+      url: '/comments/' + this.props.comment.id + '/votes/0',
       method: 'POST',
-      processData: false,
-      contentType: false,
+      data: {_method: "PUT"}
     }).done(function(result) {
       if (result.status == 1) {
         self.setState({up_vote: self.state.up_vote - 1, isUpVote: false})
@@ -140,9 +138,9 @@ var ItemComment = React.createClass({
             <input type="hidden" name="_method" value="PUT" />
             <div className="form-group">
               <textarea className="form-control content-edit"
-                  name="content"
-                  defaultValue={this.state.content}
-                  onChange={this.handleChangeEdit}>
+                name="content"
+                defaultValue={this.state.content}
+                onChange={this.handleChangeEdit}>
               </textarea>
             </div>
 
@@ -164,14 +162,14 @@ var ItemComment = React.createClass({
           </div>
           <div className="vt-action-vote">
             <a href="javascript:"
-                  className={classVoteUp}
-                  onClick={this.upVote}>
-                  <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
+              className={classVoteUp}
+              onClick={this.upVote}>
+              <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
             </a>
             <a href="javascript:"
-                  className={classDontVote}
-                  onClick={this.removeVote}>
-                  <i className="fa fa-thumbs-up" aria-hidden="true"></i>
+              className={classDontVote}
+              onClick={this.removeVote}>
+              <i className="fa fa-thumbs-up" aria-hidden="true"></i>
             </a>
           </div>
 

@@ -38,4 +38,17 @@ class Question < ApplicationRecord
     return @questions
   end
 
+  def self.find_muti id
+    question = Question.find_by slug: id
+    unless question
+      question = Question.find_by id: id
+      if question
+        return question
+      else
+        return false
+      end
+    else
+      return question
+    end
+  end
 end

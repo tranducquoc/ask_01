@@ -7,7 +7,7 @@ var ItemTopicFollow = React.createClass({
   },
 
   componentDidMount() {
-   
+
   },
 
   componentWillReceiveProps(nextProps) {
@@ -16,11 +16,15 @@ var ItemTopicFollow = React.createClass({
 
   removeTopic() {
     var self = this;
-    
+
     $.ajax({
       url: '/topics/' + this.props.topic.id + '/fotopics',
       method: 'POST',
-      data: {type: 0}
+      data: JSON.stringify({type: 0}),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
     }).done(function(result) {
       if (result.status == 1) {
         self.props.removeTopicFollow(self.props.topic);
