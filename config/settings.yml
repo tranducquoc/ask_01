@@ -2,19 +2,59 @@ user:
   name_max: 255
   email_max: 255
   story_max: 255
+  follow: "follow"
+  unfollow: "unfollow"
+
+comment:
+  content_max: 255
+  content_min: 6
+
 question:
   content_max: 255
+
 vote:
   up: 1
   down: 0
+
 status:
   ok: 1
   not_ok: 0
+
 home:
   per_page: 5
+
 topic:
   name_max: 255
   description_max: 255
   follow: 1
   unfollow: 0
   per_page: 5
+
+profile:
+  activity:
+    per_page: 5
+
+activity:
+  answer:
+    create: "answer.create"
+    destroy: "answer.destroy"
+    up_vote: "answer.up_vote"
+    down_vote: "answer.down_vote"
+    update: "answer.update"
+
+  comment:
+    up_vote: "comment.up_vote"
+    down_vote: "comment.down_vote"
+    create: "comment.create"
+    update: "comment.update"
+    destroy: "comment.destroy"
+
+  question:
+    create: "question.create"
+    update: "question.update"
+    down_vote: "question.down_vote"
+    up_vote: "question.up_vote"
+
+  user:
+    follow: "user.follow"
+    unfollow: "user.unfollow"

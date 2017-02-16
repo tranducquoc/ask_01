@@ -1,0 +1,9 @@
+<li>
+  <span>
+    <a href="<%= user_path(a.trackable.id) %>"><%= a.trackable.name %></a>
+    <%= t "activity.follow" %>
+    <% if a.owner.present? %>
+      <b class="owner_name"><%= a.owner.name %></b>
+    <% end %>
+  </span>
+</li>

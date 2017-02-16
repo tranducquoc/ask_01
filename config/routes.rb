@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     resources :votes
   end
 
-  resources :users
+  resources :users do
+    resources :follows, only: :create
+  end
 
   resources :topics do
     resources :fotopics, only: :create

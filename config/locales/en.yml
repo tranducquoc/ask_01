@@ -113,3 +113,36 @@ en:
     show:
       follow: "Follow"
       unfollow: "Unfollow"
+
+  profile_page:
+    feed: "Feed"
+    ask: "Ask"
+    answers: "Answers"
+    comments: "Comments"
+    last_activity: "Last activity"
+    last_questions: "Last questions"
+    last_answers: "Last answers"
+    last_comments: "Last comments"
+
+  activity:
+    create: "is created by"
+    update: "is updated by"
+    destroy: "is removed by"
+    up_vote: "is upvote by"
+    down_vote: "is downvote by"
+    is_answered: "is answered by"
+    is_commented: "is commented by"
+    follow: "is followed by"
+    unfollow: "is unfollowed by"
+
+  user:
+    show:
+      follow: "Follow"
+      unfollow: "Unfollow"
+      follower: "Follower"
+
+  flash:
+    question:
+      not_found: "Question is not found"
+    user:
+      not_found: "This user is not found"
