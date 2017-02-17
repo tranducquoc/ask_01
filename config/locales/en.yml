@@ -23,6 +23,56 @@ en:
 
   hello: "Hello world"
   title: "Ask and answer"
+  admin:
+    title: "Admin management"
+    welcome: "Welcome to admin page"
+    home: "Home"
+    header:
+      sign_out: "Sign out"
+      member_since: "Member since"
+    sidebar:
+      manage_user: "Manage users"
+      manage_topic: "Manage topics"
+      list_topic: "List topics"
+      create_topic: "Create topic"
+      manage_question: "Manage question"
+      list_question: "List question"
+
+    user:
+      list:
+        title: "List users"
+        sub_title: "List all user"
+        name: "Name"
+        email: "Email"
+        story: "Story"
+        avatar: "Avatar"
+        register_date: "Registed date"
+        role: "Role"
+        action: "Action"
+      edit:
+        title: "Edit user"
+        sub_title: "Edit information of user"
+        save: "Save user"
+        role: "Role"
+    topic:
+      list:
+        title: "List topic"
+        sub_title: "List topic available"
+      new:
+        title: "Create topic"
+        sub_title: "Create topic for question"
+      edit:
+        title: "Edit topic"
+        sub_title: "Edit information topic"
+    question:
+      list:
+        title: "List question"
+        sub_title: "List detail question"
+        table:
+          title: "Title"
+          user: "User"
+          topic: "Topics"
+          action: "Action"
 
   search_page:
     title: "Result search for work:"
@@ -146,3 +196,26 @@ en:
       not_found: "Question is not found"
     user:
       not_found: "This user is not found"
+      email: "Your email not correct"
+    admin:
+      user:
+        update:
+          success: "Update user successfully!"
+          failed: "Update user unsuccessfully!"
+        not_found: "User is not found"
+      topic:
+        list:
+          name: "Name"
+          description: "Description"
+          icon: "Icon"
+          action: "Action"
+        not_found: "Topic is not found"
+        update:
+          success: "Update topic successfully!"
+          failed: "Update topic unsuccessfully!"
+        delete:
+          success: "Delete topic successfully!"
+          failed: "Delete topic unsuccessfully!"
+        create:
+          success: "Create topic successfully!"
+          failed: "Create topic unsuccessfully!"

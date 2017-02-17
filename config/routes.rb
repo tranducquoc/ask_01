@@ -23,4 +23,10 @@ Rails.application.routes.draw do
     resources :fotopics, only: :create
   end
 
+  namespace :admin do
+    root "home#index", path: "/"
+    resources :users
+    resources :topics
+    resources :questions
+  end
 end

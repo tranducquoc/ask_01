@@ -1,0 +1,32 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    <%= t("admin.user.edit.title") %>
+    <small><%= t("admin.user.edit.sub_title") %></small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="<%= admin_users_path %>"><i class="fa fa-dashboard"></i>
+      <%= t("admin.user.list.title") %></a></li>
+    <li class="active"><%= t("admin.user.edit.title") %></li>
+  </ol>
+</section>
+
+<section class="content">
+  <%= simple_form_for [:admin, @user] do |f| %>
+    <%= f.input :name, autofocus: true %>
+    <%= f.input :story, as: :text, autofocus: true %>
+    <%= f.input :email, autofocus: true %>
+    <%= f.input :avatar, as: :file %>
+    <div class="form-img-preview">
+      <%= image_tag @user.avatar, class: "img_40" %>
+    </div>
+    <div class="form-group">
+      <label for="user[role]"><%= t("admin.user.edit.role") %></label>
+      <%= f.select(:role, User::roles.keys.map {|role| [role.titleize, role]},
+        {}, {class: "form-control"}) %>
+    </div>
+    <div class="actions">
+      <%= f.button :submit, value: t("admin.user.edit.save") %>
+    </div>
+  <% end %>
+</section>

@@ -20,10 +20,10 @@
           display: block;
           float: left;
           .wr-avatar{
-
           }
           .name {
-
+            margin-top: 5px;
+            color: black;
           }
           .wr-suggest-ask{
             display: block;
@@ -70,6 +70,8 @@
               }
               .name {
                 @extend .block_left;
+                margin-top: 5px;
+                color: black;
               }
             }
           }

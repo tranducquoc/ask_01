@@ -1,0 +1,15 @@
+<% @topics.each do |topic| %>
+  <tr>
+    <td><%= topic.name %></td>
+    <td><%= topic.description %></td>
+    <td><img src="<%= asset_path(topic.icon) %>" class="img_25" />
+    </td>
+    <td>
+      <a href="<%= admin_topic_path(topic.id) %>"
+        data-method="delete" rel="nofollow">
+        <i class="fa fa-times" aria-hidden="true"></i></a>
+      <a href="<%= edit_admin_topic_path(topic.id) %>">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+    </td>
+  </tr>
+<% end %>

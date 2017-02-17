@@ -34,6 +34,9 @@ profile:
   activity:
     per_page: 5
 
+admin:
+  per_page: 10
+
 activity:
   answer:
     create: "answer.create"

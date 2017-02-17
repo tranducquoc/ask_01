@@ -1,0 +1,20 @@
+{
+  "name": "dsl-generated-dependencies",
+  "dependencies": {
+    "jquery": "latest",
+    "bootstrap": "latest",
+    "moment": "latest",
+    "select2": "latest",
+    "handlebars": "latest",
+    "tinymce": "latest",
+    "markdown": "latest",
+    "underscore": "latest",
+    "classnames": "latest",
+    "admin-lte": "latest",
+    "datatables.net": "latest",
+    "datatables.net-dt": "latest",
+    "simplemde": "latest",
+    "marked": "latest"
+  }
+}
+

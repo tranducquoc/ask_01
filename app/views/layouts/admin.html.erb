@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= t "admin.title" %></title>
+
+    <%= stylesheet_link_tag "admin", debug: true, media: "all",
+      "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "application", debug: true %>
+    <%= csrf_meta_tags %>
+
+    <%= Gon::Base.render_data %>
+  </head>
+
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+      <!-- Main Header -->
+      <%= render template: "layouts/_admin_header" %>
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+          <!-- Sidebar Menu -->
+          <ul class="sidebar-menu">
+            <li class="active">
+              <a href="<%= admin_users_path %>"><i class="fa fa-link"></i>
+              <span><%= t "admin.sidebar.manage_user" %></span></a></li>
+            <li>
+              <a href="<%= admin_topics_path %>">
+                <i class="fa fa-link"></i>
+                <span><%= t "admin.sidebar.manage_topic" %></span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<%= admin_topics_path %>">
+                  <%= t "admin.sidebar.list_topic" %></a></li>
+                <li><a href="<%= new_admin_topic_path %>">
+                  <%= t "admin.sidebar.create_topic" %></a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="<%= admin_questions_path %>">
+                <i class="fa fa-link"></i>
+                <span><%= t "admin.sidebar.manage_question" %></span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<%= admin_questions_path %>">
+                  <%= t "admin.sidebar.list_question" %></a></li>
+              </ul>
+            </li>
+          </ul>
+          <!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, class: "alert alert-#{name}" %>
+        <% end %>
+        <%= yield %>
+      </div>
+      <!-- /.content-wrapper -->
+
+      <!-- Main Footer -->
+      <%= render template: "layouts/_admin_footer" %>
+      <div class="control-sidebar-bg"></div>
+    </div>  <!-- ./wrapper -->
+  </body>
+
+  <script type="text/javascript">
+    I18n.defaultLocale = "<%= I18n.default_locale %>";
+    I18n.locale = "<%= I18n.locale %>";
+    $(".alert" ).fadeOut(3000);
+  </script>
+
+</html>

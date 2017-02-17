@@ -1,0 +1,25 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    <%= t("admin.topic.new.title") %>
+    <small><%= t("admin.topic.new.sub_title") %></small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="<%= admin_topics_path %>"><i class="fa fa-dashboard"></i>
+      <%= t("admin.topic.list.title") %></a></li>
+    <li class="active"><%= t("admin.topic.new.title") %></li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <!-- /.content -->
+  <%= simple_form_for [:admin, @topic] do |f| %>
+    <%= f.input :name, autofocus: true %>
+    <%= f.input :description, as: :text, autofocus: true %>
+    <%= f.input :icon, as: :file %>
+    <div class="actions">
+      <%= f.button :submit, value: "Save" %>
+    </div>
+  <% end %>
+</section>
