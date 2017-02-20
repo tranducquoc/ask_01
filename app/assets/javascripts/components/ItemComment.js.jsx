@@ -67,7 +67,8 @@ var ItemComment = React.createClass({
   handleCancel(e) {
     this.setState({
       styleFrEdit: {display: "none"},
-      styleFrShow: {display: "flex"}
+      styleFrShow: {display: "flex"},
+      content: this.props.comment.content
     });
   },
 
@@ -140,6 +141,7 @@ var ItemComment = React.createClass({
               <textarea className="form-control content-edit"
                 name="content"
                 defaultValue={this.state.content}
+                value={this.state.content}
                 onChange={this.handleChangeEdit}>
               </textarea>
             </div>
