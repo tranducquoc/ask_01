@@ -1,5 +1,5 @@
 class Topic < ApplicationRecord
-  has_many :question_topics
+  has_many :question_topics, dependent: :destroy
   has_many :questions, through: :question_topics
 
   has_many :actions, as: :actionable
@@ -19,7 +19,7 @@ class Topic < ApplicationRecord
   end
 
   def self.is_follow current_user_id, topic_id
-    query = Action.by_user(current_user_id).target(:topic).with_id(topic_id).is_follow
+    query = Action.by_user(current_user_id).target(Action.target_acts[:topic]).with_id(topic_id).is_follow
     query.length != 0
   end
 

@@ -5,7 +5,7 @@
       <%= simple_form_for @question do |f| %>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <%= f.input :title, input_html: {class: "special"} %>
-        <%= f.input :content, as: :ckeditor%>
+        <%= f.input :content, as: :text, input_html: {class: "editor_mde"} %>
 
         <%= f.input :topics, collection: @topics, label_method: :name,
           value_method: :id, label: t("question_page.topics") ,

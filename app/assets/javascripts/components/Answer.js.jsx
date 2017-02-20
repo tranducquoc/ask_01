@@ -117,7 +117,7 @@ var Answer = React.createClass({
               </td>
               <td>
                 <div className="wr-content-answer"
-                  dangerouslySetInnerHTML={{__html: this.state.content}}
+                  dangerouslySetInnerHTML={{__html: marked(this.state.content)}}
                   style={styleShow}>
                 </div>
                 <div className="wr-edit-answer">

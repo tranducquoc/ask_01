@@ -8,8 +8,8 @@
 
           <h2 class="title"><%= @question.title %></h2>
           <div class="inner-content">
-            <div class="content">
-              <%= raw @question.content %>
+            <div class="content marked">
+              <%= @question.content %>
             </div>
             <div class="wrapper-author">
               <table class="list-author">
@@ -83,9 +83,7 @@
                     <tbody>
                       <tr>
                         <td>
-                          <textarea class="elem-answer-ques" name="content">
-
-                          </textarea>
+                          <textarea class="editor_mde" name="content"></textarea>
                         </td>
                       </tr>
                       <tr>

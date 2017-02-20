@@ -47,16 +47,18 @@
                     alt: question.title %>
                 </span>
                 <span class="author">
-                  <div class="wr-avatar">
-                    <%= image_tag question.user.avatar.url,
-                      class: "circle img_40" %>
-                  </div>
-                  <div class="name">
-                    <%= question.user.name %>
-                  </div>
+                  <a href="<%= user_path(question.user.id) %>" class="link_user">
+                    <div class="wr-avatar">
+                      <%= image_tag question.user.avatar.url,
+                        class: "circle img_40" %>
+                    </div>
+                    <div class="name">
+                      <%= question.user.name %>
+                    </div>
+                  </a> 
                 </span>
-                <div class="ques-content">
-                  <%= raw question.content %>
+                <div class="ques-content marked">
+                  <%= question.content %>
                 </div>
               </div>
             </div>
