@@ -31,4 +31,25 @@ $(document).ready(function () {
     var textMarkdown = marked($(elem).html().trim());
     $(elem).html(textMarkdown);
   });
+
+  $('#col-sort').change(function() {
+    var status = $(this).val();
+    if (status == "all") {
+      window.location = '?status=all';
+    } else {
+      window.location = '?status=' + status;
+    }
+  });
+
+  $(".wr-share").css({display: "none"});
+  $(".share-link").click(function() {
+    var $divSocial = $(this).next();
+    var currentStyle = $divSocial.css("display");
+    if (currentStyle == "none") {
+      $divSocial.css("display", "block");
+    } else {
+      $divSocial.css("display", "none")
+    }
+  });
+
 });

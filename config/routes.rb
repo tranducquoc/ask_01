@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resources :votes
   end
 
-  resources :questions
+  resources :questions do
+    resources :verques, :protques
+  end
 
   resources :comments do
     resources :votes

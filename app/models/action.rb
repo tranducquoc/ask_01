@@ -1,6 +1,9 @@
 class Action < ApplicationRecord
   belongs_to :actionable, polymorphic: true
-  enum type_act: [ :down_vote, :up_vote, :share_fa, :share_tw, :follow ], _suffix: true
+
+  belongs_to :user
+
+  enum type_act: [ :down_vote, :up_vote, :share_fa, :share_tw, :follow, :protect], _suffix: true
 
   enum target_act: {answer: "Answer", question: "Question", topic: "Topic", comment: "Comment", user: "User"}
 
@@ -15,6 +18,8 @@ class Action < ApplicationRecord
   scope :is_downvote, ->{where type_act: Action.type_acts[:down_vote]}
 
   scope :is_follow, ->{where type_act: Action.type_acts[:follow]}
+
+  scope :is_protect, ->{where type_act: Action.type_acts[:protect]}
 
   scope :numberFollow, -> topic_id do
     where(actionable_id: topic_id, actionable_type: Action.target_acts[:topic],
@@ -62,6 +67,11 @@ class Action < ApplicationRecord
       type_act: :up_vote,
       actionable_type: Action.target_acts[:question],
       actionable_id: question_id).destroy_all
+  end
+
+  def self.destroy_question_protect question_id
+    Action.target(Action.target_acts[:question]).with_id(question_id)
+      .is_protect.destroy_all
   end
 
 end

@@ -37,6 +37,13 @@ profile:
 admin:
   per_page: 10
 
+page:
+  approve_ques: 0
+  edit_ques: 1
+
+version_page:
+  all: "all"
+
 activity:
   answer:
     create: "answer.create"

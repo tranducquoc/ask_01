@@ -24,6 +24,12 @@ class Question < ApplicationRecord
 
   has_many :comments, as: :commentable
 
+  scope :with_ac_user, ->{joins(actions: :user)}
+
+  scope :with_ac, ->{joins(:actions)}
+
+  scope :ac_protect, ->id{where(actions: {actionable_id: id, type_act: Action.type_acts[:protect]})}
+
   def self.new_feed_login(user_id, page)
     sql = "select q.*, IF(EXISTS(
       select * from actions a where a.user_id = #{user_id}
@@ -41,17 +47,40 @@ class Question < ApplicationRecord
     return @questions
   end
 
+  def isProtected
+    havePro = Question.with_ac.ac_protect self.id
+    havePro.length != 0
+  end
+
+  def dataProtected
+    havePro = Question.with_ac_user.ac_protect(self.id).first
+    if havePro
+      havePro.actions.first
+    else
+      nil
+    end
+  end
+
   def self.find_muti id
     question = Question.find_by slug: id
     unless question
       question = Question.find_by id: id
       if question
-        return question
+        return Question.wrap_content(question)
       else
         return false
       end
     else
-      return question
+      return Question.wrap_content(question)
     end
+  end
+
+  def self.wrap_content question
+    verque = Verque.find_newest question.id
+    if verque
+      question.title = verque.title
+      question.content = verque.content
+    end
+    question
   end
 end

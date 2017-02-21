@@ -35,6 +35,7 @@ gem "public_activity"
 gem "cancancan"
 gem "kaminari"
 gem "pry"
+gem "social-share-button"
 
 group :development, :test do
   gem "byebug", platform: :mri
