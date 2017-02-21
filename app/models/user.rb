@@ -12,6 +12,7 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
   before_save :init_role
+  before_validation :init_role
 
   mount_uploader :avatar, AvatarUploader
   enum role: [:admin, :user, :moderator]
