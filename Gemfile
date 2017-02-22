@@ -36,6 +36,8 @@ gem "cancancan"
 gem "kaminari"
 gem "pry"
 gem "social-share-button"
+gem "omniauth-facebook"
+gem "figaro"
 
 group :development, :test do
   gem "byebug", platform: :mri
