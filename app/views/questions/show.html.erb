@@ -16,20 +16,60 @@
                 <tr>
                   <td class="vt-left">
                     <div class="post-menu">
-                      <a href="" title="short permalink to this answer"
-                        class="short-link" id="link-post-33133995">
-                        <%= t("question_page.share") %>
-                      </a><span class="lsep">|</span>
-                      <a href="<%= edit_question_path %>"
-                        class="suggest-edit-post"
-                        title="revise and improve this post">
-                        <%= t("question_page.edit") %>
-                      </a><span class="lsep">|</span>
+                      <div class="wr-collapse">
+                        <a href="javascript:"
+                          class="share-link anchor-item">
+                          <%= t("question_page.share") %>
+                        </a>
+                        <div class="wr-share body-item">
+                          <%= social_share_button_tag(@question.title) %>
+                        </div>
+                      </div>
+                      <span class="lsep">|</span>
+                      <% unless @question.isProtected || !user_signed_in? %>
+                        <% if current_user.id == @question.id %>
+                          <a href="<%= edit_question_path %>"
+                            class="suggest-edit-post"
+                            title="revise and improve this post">
+                            <%= t("question_page.edit_direct") %>
+                          </a>
+                          <span class="lsep">|</span>
+                        <% end %>
+                          <a href="<%= new_question_verque_path(@question.id) %>"
+                            class="suggest-edit-post"
+                            title="revise and improve this post">
+                            <%= t("question_page.edit") %>
+                          </a>
+                        <span class="lsep">|</span>
+                      <% end %>
                       <a href="#" class="flag-post-link"
                         title="flag this post for serious problems or
                         moderator attention" data-postid="33133995">
                         <%= t("question_page.flag") %>
                       </a>
+                      <% if user_signed_in? && (current_user.admin? ||
+                        current_user.moderator?) %>
+                        <span class="lsep">|</span>
+                        <% unless @question.isProtected %>
+                          <%= link_to t("question_page.protect"),
+                            question_protques_path(@question.id),
+                            class: "btn btn-primary btn-sm", method: :post %>
+                        <% else %>
+                          <%= link_to t("question_page.unprotect"),
+                            question_protque_path(question_id: @question.id,
+                            id: @question.dataProtected.id),
+                            method: :delete,
+                            class: "btn btn-primary btn-sm" %>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <div class="alert-not-edit">
+                      <% if @question.isProtected %>
+                        <span class="alert alert-danger">
+                          <strong><%= t "question_page.alert" %></strong> <%= t "question_page.alert_protect" %>
+                            <%= @question.dataProtected.user.name %>
+                        </span>
+                      <% end %>
                     </div>
                   </td>
                   <td class="vt-right">

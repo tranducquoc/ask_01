@@ -1,0 +1,90 @@
+<div id="wr-list-ver container">
+  <div class="inner-list-ver row">
+    <div class="col-md-8 col-md-offset-1">
+      <div class="list-version-all">
+        <div class="original">
+          <div class="header">
+            <div class="title">
+              <h4><%= @question.title %></h4>
+            </div>
+            <div class="wr-author">
+              <div class="wr-image">
+                <%= image_tag @question.user.avatar, class: "img_40 avatar" %>
+              </div>
+              <div class="wr-name">
+                <p class="name"><%= @question.user.name %></p>
+              </div>
+            </div>
+          </div>
+          <div class="content">
+            <%= @question.content %>
+          </div>
+        </div>
+        <div class="control-sort">
+          <div></div>
+          <div class="wr-sort">
+            <select name="status" class="form-control" id="col-sort">
+              <option value="<%= :all %>"
+                <%= "selected" if params[:status].nil? %>>
+                <%= t "version_question.all" %></option>
+              <option value="<%= :approved %>"
+                <%= "selected" if params[:status] &&
+                  params[:status].to_sym == :approved %>>
+                <%= t "version_question.done" %></option>
+              <option value="<%= :rejected %>"
+                <%= "selected" if params[:status] &&
+                  params[:status].to_sym == :rejected %>>
+                <%= t "version_question.rejected" %></option>
+              <option value="<%= :pending %>"
+                <%= "selected" if params[:status] &&
+                  params[:status].to_sym == :pending %>>
+                <%= t "version_question.pending" %></option>
+            </select>
+          </div>
+        </div>
+        <ul class="list-version">
+          <% @verques.each do |verque| %>
+            <div class="item-verque">
+              <div class="header">
+                <div class="rev clear">
+                  <%= t("version_question.rev") %> <%= verque.version %>
+                </div>
+                <div class="title">
+                  <h4><%= verque.title %></h4>
+                </div>
+                <div class="wr-action">
+                  <% if verque.status.to_sym == :pending %>
+                    <%= link_to t("version_question.approve"), question_verque_path(question_id:
+                      params[:question_id], id: verque.id,
+                      status: :approved), method: "PUT",
+                      class: "approved btn btn-success btn-sm" %>
+                    <%= link_to t("version_question.reject"), question_verque_path(question_id:
+                      params[:question_id], id: verque.id,
+                      status: :rejected), method: "PUT",
+                      class: "rejected btn btn-danger btn-sm" %>
+                  <% elsif verque.status.to_sym == :rejected %>
+                    <label class="rejected btn btn-sm btn-danger"><%= t "version_question.rejected" %></label>
+                  <% else %>
+                    <label class="approved btn btn-sm btn-success"><%= t "version_question.done" %></label>
+                  <% end %>
+                </div>
+                <div class="wr-author">
+                  <div class="wr-image">
+                    <%= image_tag verque.user.avatar, class: "img_40 avatar" %>
+                  </div>
+                  <div class="wr-name">
+                    <p class="name"><%= verque.user.name %></p>
+                  </div>
+                </div>
+              </div>
+              <div class="content">
+                <%= verque.content %>
+              </div>
+            </div>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -26,4 +26,5 @@
 //= require admin-lte
 //= require marked
 //= require simplemde/dist/simplemde.min.js
+//= require social-share-button
 //= require_tree .

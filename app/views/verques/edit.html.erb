@@ -1,0 +1,57 @@
+<div id="wr-edit-question container">
+  <div class="fr-form-ask row">
+    <div class="col-md-5 col-md-offset-1">
+      <div class="wr_select_ver">
+        <label for="verques">
+          <%= t "question_page.select_question_to_edit" %>
+          <% if current_user.admin? || current_user.moderator? ||
+            current_user.id == @question.user_id %>
+            <%= link_to t("question_page.approve_version"), question_verques_path(params[:question_id]),
+              class: "btn btn-sm btn-primary" %>
+          <% end %>
+        </label>
+        <%= select_tag "verques", options_for_select(@verques.collect{|u|
+          ["Rev #{u.version} #{u.title}-#{u.user.name}-#{u.created_at}", u.id]},
+          params[:id]), class: "form-control", quesid: params[:question_id] %>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <%= simple_form_for @verque, url: "/questions/#{params[:question_id]}/verques",
+            method: :post do |f| %>
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            <%= f.input :title, input_html: {class: "special"} %>
+            <%= f.input :content, as: :text %>
+            <%= f.button :submit, t("question_page.save_question") %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <ul class="list-version">
+        <% @verques.each do |verque| %>
+          <div class="item-verque <%= "highlight" if verque.id == params[:id].to_i %>">
+            <div class="header">
+              <div class="rev clear">
+                <%= t("version_question.rev") %> <%= verque.version %>
+              </div>
+              <div class="title">
+                <h4><%= verque.title %></h4>
+              </div>
+              <div class="wr-author">
+                <div class="wr-image">
+                  <%= image_tag verque.user.avatar, class: "img_40 avatar" %>
+                </div>
+                <div class="wr-name">
+                  <p class="name"><%= verque.user.name %></p>
+                </div>
+              </div>
+            </div>
+            <div class="content">
+              <%= verque.content %>
+            </div>
+          </div>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -41,6 +41,12 @@
                 tr{
                   .vt-left{
                     text-align: left;
+                    .alert-not-edit{
+                      display: block;
+                      width: 360px;
+                      height: 54px;
+                      padding-top: 17px;
+                    }
                   }
                   .vt-right{
                     text-align: right;
@@ -180,5 +186,18 @@
         }
       }
     }
+  }
+}
+
+
+.wr-collapse{
+  display: inline-block;
+  position: relative;
+  .anchor-item{
+
+  }
+  .body-item{
+    position: absolute;
+    min-width: 65px;
   }
 }
