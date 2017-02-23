@@ -242,3 +242,10 @@ en:
         create:
           success: "Create topic successfully!"
           failed: "Create topic unsuccessfully!"
+
+  email:
+    notify_answer: "Some people answer your question"
+    have: "have"
+    question_last_day: "questions in last day"
+    notify_new_answer: "Your question have new answer"
+    have_new_question_in_topic: "You have new question in topic which you have followed"

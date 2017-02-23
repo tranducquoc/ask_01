@@ -6,7 +6,6 @@ class Topic < ApplicationRecord
 
   validates :name, presence: true, length: {maximum: Settings.topic.name_max}
   validates :description, presence: true, length: {maximum: Settings.topic.description_max}
-  validates :icon, presence: true
 
   mount_uploader :icon, IconTopicUploader
 

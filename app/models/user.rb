@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable
+    :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   include PublicActivity::Model
 
@@ -62,6 +62,25 @@ class User < ApplicationRecord
       PublicActivity::Activity.order("created_at desc")
         .where owner_id: user_id
     end
+
+    def from_omniauth auth
+      @users = where(provider: auth.provider, uid: auth.uid)
+      if @users.length == 0
+        @user = User.new
+        @user.provider = auth.provider
+        @user.uid = auth.uid
+        @user.email = auth.info.email
+        @user.name = auth.info.name
+        @user.remote_avatar_url = auth.info.image
+        @user.password = Devise.friendly_token[0, 20]
+        @user.role = User.roles[:user]
+        @user.save!
+        @user
+      else
+        @users.first
+      end
+    end
+
   end
 
   private

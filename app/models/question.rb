@@ -30,6 +30,8 @@ class Question < ApplicationRecord
 
   scope :ac_protect, ->id{where(actions: {actionable_id: id, type_act: Action.type_acts[:protect]})}
 
+  scope :lastday, ->{where updated_at: 1.day.ago..Time.now}
+
   def self.new_feed_login(user_id, page)
     sql = "select q.*, IF(EXISTS(
       select * from actions a where a.user_id = #{user_id}

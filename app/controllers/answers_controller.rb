@@ -12,6 +12,10 @@ class AnswersController < ApplicationController
     if @answer.save
       @answer.create_activity key: Settings.activity.answer.create, owner: current_user
       result = {status: Settings.status.ok}.to_json
+      question = Question.find_by id: params[:reply_to]
+      if question && current_user.id != question.user_id
+        UserMailer.notifyAnswer(question).deliver_now
+      end
     else
       result = {status: Settings.status.not_ok, errors: @answer.errors}.to_json
     end
