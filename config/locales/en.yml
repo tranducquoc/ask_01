@@ -131,7 +131,7 @@ en:
 
   login_page:
     title: "Sign in"
-    btn_login: "Login"
+    btn_login: "Log in"
     yes_remember_me: "Yes, remember me"
 
   reset_unlock_page:
