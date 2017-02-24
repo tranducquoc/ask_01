@@ -1,6 +1,12 @@
 <% @questions.each do |question| %>
   <tr>
-    <td><a href="<%= question_path(question.slug) %>"> <%= question.title %></a></td>
+    <td>
+      <a href="<%= question_path(question.slug) %>"> <%= question.title %>
+        <a href="<%= admin_question_path(question.id) %>" class="text-right">
+          <i class="fa fa-line-chart" aria-hidden="true"></i></a>
+        </a>
+      </a>
+    </td>
     <td>
       <img src="<%= question.user.avatar %>" class="img_25" />
       <span><%= question.user.name %></span>

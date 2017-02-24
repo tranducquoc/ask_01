@@ -37,18 +37,19 @@
         .question-feed{
           .paged-list-item{
             padding: 10px;
-            border-bottom: 1px dashed #C0C0C0;
+            border-bottom: 1px dashed #000000;
+            background-color: #e6c7d2;
             .feed-item-inner{
               .list-topics{
                 margin-bottom: 5px;
                 .item-topic{
                   border-radius: 8px;
                   display: inline-block;
-                  background-color: #C0C0C0;
+                  background-color: #a5637b;
                   a{
                     color: white;
                     text-decoration: none;
-                    font-size: 12px;
+                    font-size: 11px;
                     padding: 4px;
                   }
                 }
@@ -61,18 +62,17 @@
                   color: black;
                 }
               }
+              .time{
+                font-size: 11px;
+                color: #8e6969;
+              }
               .author{
-                a.link_user{
-                  display: block;
-                  @extend .clearfix;
-                  .wr-avatar{
-                    @extend .block_left;
-                  }
-                  .name{
-                    @extend .block_left;
-                    margin-top: 8px;
-                    margin-left: 7px;
-                  }
+                @extend .clearfix;
+                .wr-avatar{
+                  @extend .block_left;
+                }
+                .name {
+                  @extend .block_left;
                 }
               }
             }

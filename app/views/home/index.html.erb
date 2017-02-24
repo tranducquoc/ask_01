@@ -1,11 +1,11 @@
 <section id="home-page">
   <div class="feed-wrap row">
-    <div class="sidebar-topic-trending col-md-3">
-      <% if user_signed_in? %>
+    <% if user_signed_in? %>
+      <div class="sidebar-topic-trending col-md-3">
         <%= react_component("HomeListTopic", topicsFollow: @topicsFollow,
           topics: @topics) %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
     <div class="feed-inner-wrap col-md-9">
       <span class="home_main_feed_head">
         <%= t "home_page.top_question_for_you" %></span>
@@ -38,9 +38,6 @@
                   </span>
                 <% end %>
               </div>
-              <div class="time">
-                <%= question.updated_at %>
-              </div>
               <span class="feed-ques-title">
                 <%= link_to question.title, question_path(question.slug),
                   alt: question.title %>
@@ -56,6 +53,9 @@
                   </div>
                 </a>
               </span>
+              <div class="time">
+                <%= question.updated_at %>
+              </div>
               <div class="ques-content marked">
                 <%= question.content %>
               </div>
@@ -63,7 +63,7 @@
           </div> <!-- .paged-list-item -->
         <% end %>
 
-        <%= will_paginate @questions %>
+        <%= paginate @questions %>
       </div> <!-- .question-feed -->
     </div>
   </div>

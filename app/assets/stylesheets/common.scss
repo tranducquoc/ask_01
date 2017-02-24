@@ -54,3 +54,19 @@
     height: 0;
   }
 }
+
+.errors{
+  color: red;
+  .error{
+    display: block;
+  }
+}
+
+.clear{
+  clear: both;
+}
+
+@font-face{
+  font-family: "ArchivoNarrow-BoldItalic";
+  src: url("/assets/ArchivoNarrow-BoldItalic.ttf") format("truetype");
+}

@@ -11,6 +11,10 @@
 </section>
 
 <section class="content">
+  <div class="control">
+    <%= link_to t("admin.user.list.btn_export_csv"),
+      admin_topics_path(format: :csv), class: "btn btn-primary" %>
+  </div>
 	<table id="list-users" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
       <tr>

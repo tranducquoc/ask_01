@@ -29,7 +29,6 @@ class VotesController < ApplicationController
       answer.up_vote = answer.up_vote + 1
     end
     p = Action.create action_upvote_params
-    p.save
     Action.by_user(current_user.id).target(Action.target_acts[:answer])
       .with_id(params[:answer_id]).is_downvote.destroy_all
     return answer.save
@@ -58,7 +57,6 @@ class VotesController < ApplicationController
       answer.down_vote = answer.down_vote + 1
     end
     p = Action.create action_downvote_params
-    p.save
     Action.by_user(current_user.id).target(Action.target_acts[:answer])
       .with_id(params[:answer_id]).is_upvote.destroy_all
     return answer.save

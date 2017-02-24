@@ -27,4 +27,6 @@
 //= require marked
 //= require simplemde/dist/simplemde.min.js
 //= require social-share-button
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .

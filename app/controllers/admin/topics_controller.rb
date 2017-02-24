@@ -1,8 +1,11 @@
 class Admin::TopicsController < AdminController
 
   def index
-    @topics = Kaminari.paginate_array(Topic.order("created_at desc"))
-      .page(params[:page]).per Settings.admin.per_page
+    @topics = Topic.lastest.page(params[:page]).per Settings.admin.per_page
+    respond_to do |format|
+      format.html
+      format.csv {send_data @topics.to_csv}
+    end
   end
 
   def new
