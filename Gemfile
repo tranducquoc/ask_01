@@ -43,6 +43,16 @@ gem "chartkick"
 
 group :development, :test do
   gem "byebug", platform: :mri
+  gem "capybara"
+  gem "rspec-rails", "3.5"
+  gem "factory_girl_rails", require: false
+  gem "database_cleaner", "~> 1.5"
+  gem "rspec-collection_matchers"
+  gem "rails-controller-testing"
+  gem "shoulda"
+  gem "shoulda-matchers", "3.1"
+  gem "simplecov"
+  gem "json-schema"
 end
 
 group :development do

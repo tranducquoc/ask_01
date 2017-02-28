@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "required": ["status", "data"],
+  "properties": {
+    "status" : {"type" : "integer"},
+    "data" : {
+      "type" : "object",
+      "properties": {
+        "id" : {"type" : "integer"},
+        "content" : {"type" : "string"},
+        "user_id" : {"type" : "integer"},
+        "up_vote" : {"type" : "integer"},
+        "down_vote" : {"type" : "integer"},
+        "created_at" : {"type" : "string", "format": "date-time"},
+        "updated_at" : {"type" : "string", "format": "date-time"},
+        "reply_to" : {"type" : "integer"}
+      }
+    }
+  }
+}
+
