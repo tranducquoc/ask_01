@@ -1,8 +1,13 @@
 class Admin::UsersController < AdminController
 
   def index
-    @users = Kaminari.paginate_array(User.order("created_at desc"))
-      .page(params[:page]).per(Settings.admin.per_page);
+    @users = User.lastest.page(params[:page]).per Settings.admin.per_page
+    respond_to do |format|
+      format.html
+      format.csv {
+        send_data @users.to_csv
+      }
+    end
   end
 
   def edit

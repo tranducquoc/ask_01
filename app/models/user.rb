@@ -24,6 +24,8 @@ class User < ApplicationRecord
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
     message: I18n.t("flash.user.email")
 
+  scope :lastest, ->{order created_at: :desc}
+
   class << self
 
     def is_follow_user(user_id, current_user_id)
@@ -81,6 +83,7 @@ class User < ApplicationRecord
       end
     end
 
+    include Common
   end
 
   private

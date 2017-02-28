@@ -12,27 +12,84 @@
 
 <!-- Main content -->
 <section class="content">
-  <table id="list-topics" class="table table-striped table-bordered" cellspacing="0">
+  <%= link_to t("admin.user.list.btn_export_csv"),
+    admin_questions_path(format: :csv), class: "btn btn-primary" %>
+  <table id="list-topics" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
-      <tr>
-        <th><%= t "admin.question.list.table.title" %></th>
-        <th><%= t "admin.question.list.table.user" %></th>
-        <th><%= t "admin.question.list.table.topic" %></th>
-        <th><%= t "admin.question.list.table.action" %></th>
-      </tr>
+        <tr>
+          <th><%= t "admin.question.list.table.title" %></th>
+          <th><%= t "admin.question.list.table.user" %></th>
+          <th><%= t "admin.question.list.table.topic" %></th>
+          <th><%= t "admin.question.list.table.action" %></th>
+        </tr>
     </thead>
     <tfoot>
-      <tr>
-        <th><%= t "admin.question.list.table.title" %></th>
-        <th><%= t "admin.question.list.table.user" %></th>
-        <th><%= t "admin.question.list.table.topic" %></th>
-        <th><%= t "admin.question.list.table.action" %></th>
-      </tr>
+        <tr>
+          <th><%= t "admin.question.list.table.title" %></th>
+          <th><%= t "admin.question.list.table.user" %></th>
+          <th><%= t "admin.question.list.table.topic" %></th>
+          <th><%= t "admin.question.list.table.action" %></th>
+        </tr>
     </tfoot>
     <tbody>
-      <%= render "list" %>
+       <%= render "list" %>
     </tbody>
   </table>
   <%= paginate @questions %>
+
+  <div class="box">
+    <div class="box-header with-border">
+      <h4 class="box-title">
+        <%= t "admin.question.list.count_question_created" %>
+      </h4>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"
+          data-toggle="tooltip" title="" data-original-title="Collapse">
+          <i class="fa fa-minus"></i></button>
+        <button type="button" class="btn btn-box-tool" data-widget="remove"
+          data-toggle="tooltip" title="Remove">
+          <i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div class="box-body">
+      <%= line_chart Question.graph_question_created %>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="box-header with-border">
+      <h4 class="box-title">
+        <%= t "admin.question.list.analytic_up_vote" %>
+      </h4>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"
+          data-toggle="tooltip" title="" data-original-title="Collapse">
+          <i class="fa fa-minus"></i></button>
+        <button type="button" class="btn btn-box-tool" data-widget="remove"
+          data-toggle="tooltip" title="Remove">
+          <i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div class="box-body">
+      <%= line_chart Question.graph_question_upvote %>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="box-header with-border">
+      <h4 class="box-title"><%= t "admin.question.list.percentage_action" %></h4>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"
+          data-toggle="tooltip" title="" data-original-title="Collapse">
+          <i class="fa fa-minus"></i></button>
+        <button type="button" class="btn btn-box-tool" data-widget="remove"
+          data-toggle="tooltip" title="Remove">
+          <i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div class="box-body">
+      <%= pie_chart Question.graph_percentage_type %>
+    </div>
+  </div>
 </section>
 <!-- /.content -->

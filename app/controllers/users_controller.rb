@@ -15,8 +15,8 @@ class UsersController < ApplicationController
     end
     @support = Supports::UserSupport.new(@user)
     @activities = User.activity_by_user(params[:id])
-      .paginate(page: params[:page],
-      per_page: Settings.profile.activity.per_page)
+      .page(params[:page])
+      .per Settings.profile.activity.per_page
 
     if user_signed_in?
       @isFollowUser = User.is_follow_user(params[:id], current_user.id)

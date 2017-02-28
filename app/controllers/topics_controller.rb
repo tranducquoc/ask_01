@@ -12,8 +12,8 @@ class TopicsController < ApplicationController
     @topic = Topic.includes({questions: [:topics, :user,
       answers: [:user, {comments: [:actions, :user]}]]}).find_muti params[:id]
     if @topic
-      @questions = @topic.questions.paginate(page: params[:page],
-        per_page: Settings.topic.per_page)
+      @questions = @topic.questions.page(params[:page])
+        .per Settings.topic.per_page
       if user_signed_in?
         @isFollow = Topic.is_follow(current_user.id, @topic.id)
       end
